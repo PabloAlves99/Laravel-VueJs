@@ -4,6 +4,15 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use App\Models\User;
+
+Route::get("/users", function () {
+    $users = User::paginate(12);
+    return Inertia::render('Users', [
+        'users' => $users,
+    ]);
+})->name('users');
+
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
