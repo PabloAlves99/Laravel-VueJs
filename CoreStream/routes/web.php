@@ -7,7 +7,7 @@ use Inertia\Inertia;
 use App\Models\User;
 
 Route::get("/users", function () {
-    $users = User::paginate(12);
+    $users = User::paginate(14);
     return Inertia::render('Users', [
         'users' => $users,
     ]);

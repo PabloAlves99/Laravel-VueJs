@@ -58,14 +58,17 @@ const methods = {
 <style scoped>
 .container-all {
     background-color: #171923;
-    height: 100vh;
-    padding: 30px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 15px;
 }
 
 .container {
+    flex: 1;
     max-width: 800px;
     margin: 0 auto;
-    padding: 30px;
+    padding: 20px 30px;
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -73,7 +76,7 @@ const methods = {
 
 .title {
     font-size: 2.5rem;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-align: center;
     color: #F9322C;
     font-weight: bold;
