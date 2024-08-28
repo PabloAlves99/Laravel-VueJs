@@ -11,9 +11,18 @@ const form = useForm({
     email: '',
     password: '',
     password_confirmation: '',
+    login: '',
+    phone: '',
+    profile: '',
 });
 
+const profileOptions = ['Adm', 'adv', 'atendente'];
 const submit = () => {
+    if (!profileOptions.includes(form.profile)) {
+        alert('Perfil inválido. Escolha entre: Adm, adv, atendente.');
+        return;
+    }
+
     form.post(route('register'), {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
@@ -84,6 +93,48 @@ const submit = () => {
                 />
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="login" value="Login" />
+
+                <TextInput
+                    id="login"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.login"
+                    required
+                    autofocus
+                    autocomplete="username"
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="phone" value="Phone" />
+
+                <TextInput
+                    id="phone"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.phone"
+                    required
+                    autofocus
+                />
+            </div>
+
+            <div class="mt-4">
+                <InputLabel for="profile" value="Profile" />
+
+                <TextInput
+                    id="profile"
+                    type="text"
+                    class="mt-1 block w-full"
+                    v-model="form.profile"
+                    required
+                    autofocus
+                    autocomplete="profile"
+                    placeholder="Adm, Advogado ou Atendente"
+                />
             </div>
 
             <div class="flex items-center justify-end mt-4">
