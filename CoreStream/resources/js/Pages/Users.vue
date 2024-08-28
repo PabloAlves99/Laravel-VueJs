@@ -1,9 +1,10 @@
-<script>
-export default {
-    props: {
-        users: Object,
-    },
-    methods: {
+<script setup>
+import { Head } from '@inertiajs/vue3';
+
+const props = defineProps({
+    users: Object,
+});
+const methods = {
         // Métodos para navegação entre páginas
         nextPage() {
             if (this.users.next_page_url) {
@@ -15,43 +16,42 @@ export default {
                 window.location.href = this.users.prev_page_url;
             }
         },
-    },
-};
+    };
 </script>
 
 <template>
     <div class="container-all">
-    <Head title="Registered Users" />
+        <Head title="Registered Users"/>
 
-    <h1 class="title">Lista de Usuários</h1>
-    <div class="container">
+        <h1 class="title">Lista de Usuários</h1>
+        <div class="container">
 
-        <table class="user-table">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Email</th>
-                    <th>Telefone</th>
-                    <th>Perfil</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="user in users.data" :key="user.id">
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
-                    <td>{{ user.phone }}</td>
-                    <td>{{ user.profile }}</td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Telefone</th>
+                        <th>Perfil</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="user in users.data" :key="user.id">
+                        <td>{{ user.name }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.profile }}</td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <div class="pagination">
-            <button @click="previousPage" :disabled="!users.prev_page_url" class="pagination-button">Anterior</button>
-            <button @click="nextPage" :disabled="!users.next_page_url" class="pagination-button">Próximo</button>
-            <span class="pagination-info">Página {{ users.current_page }} de {{ users.last_page }}</span>
+            <div class="pagination">
+                <button @click="previousPage" :disabled="!users.prev_page_url" class="pagination-button">Anterior</button>
+                <button @click="nextPage" :disabled="!users.next_page_url" class="pagination-button">Próximo</button>
+                <span class="pagination-info">Página {{ users.current_page }} de {{ users.last_page }}</span>
+            </div>
+
         </div>
-
-    </div>
     </div>
 </template>
 
