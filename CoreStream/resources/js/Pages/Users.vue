@@ -4,19 +4,18 @@ import { Head } from '@inertiajs/vue3';
 const props = defineProps({
     users: Object,
 });
-const methods = {
-        // Métodos para navegação entre páginas
-        nextPage() {
-            if (this.users.next_page_url) {
-                window.location.href = this.users.next_page_url;
-            }
-        },
-        previousPage() {
-            if (this.users.prev_page_url) {
-                window.location.href = this.users.prev_page_url;
-            }
-        },
-    };
+
+const nextPage = () => {
+    if (props.users.next_page_url) {
+        window.location.href = props.users.next_page_url;
+    }
+};
+
+const previousPage = () => {
+    if (props.users.prev_page_url) {
+        window.location.href = props.users.prev_page_url;
+    }
+};
 </script>
 
 <template>
