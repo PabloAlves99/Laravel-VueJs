@@ -1,5 +1,7 @@
 import './bootstrap';
-import '../css/app.css';
+import '../css/app.scss';
+import "../metronic/core/index";
+import "../metronic/app/layouts/demo1";
 
 import { createApp, h } from 'vue';
 import { createInertiaApp } from '@inertiajs/vue3';
