@@ -84,11 +84,6 @@ const previousPage = () => {
     margin-bottom: 15px;
     font-weight: bold;
 }
-.container-user-table-list-users{
-    background-color: #FEFEFE;
-    color: #0D0E12;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
 
 .user-table-list-users {
     width: 100%;
@@ -96,14 +91,14 @@ const previousPage = () => {
     margin-bottom: 20px;
 }
 
+.user-table-list-users th{
+    font-size: 1.4rem;
+}
+
 .user-table-list-users th, .user-table-list-users td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
-}
-
-.user-table-list-users th {
-    background-color: #f4f4f4;
 }
 
 .pagination-list-users {
