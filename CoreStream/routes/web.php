@@ -13,6 +13,9 @@ Route::get("/users", function () {
     ]);
 })->name('users');
 
+Route::get('/metronic', function () {
+    return view('index');
+})->name('metronic');
 
 Route::get('/', function () {
     return Inertia::render('Welcome', [
