@@ -348,6 +348,7 @@ function handleImageError() {
 </template> -->
 <template>
     <div>
+        <Head title="Home" />
     <!-- Container -->
     <div class="container-fixed">
     <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">

@@ -11,9 +11,7 @@ License: https://keenthemes.com/metronic/tailwind/docs/getting-started/license
 <!DOCTYPE html>
 <html class="h-full" data-theme="true" data-theme-mode="light" lang="en">
  <head><base href="../../">
-  <title>
-   Metronic - Tailwind CSS
-  </title>
+  <title inertia>{{ config('app.name', 'Laravel') }}</title>
   <meta charset="utf-8"/>
   <meta content="follow, index" name="robots"/>
   <link href="https://keenthemes.com/metronic" rel="canonical"/>
