@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Foundation\Application;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
@@ -13,20 +14,24 @@ use Inertia\Inertia;
 //     ]);
 // })->name('users');
 
-Route::get('/users', [UserController::class,'index'])->name('users.registration');
+Route::get('/users', [UserController::class,'registration'])->name('users.registration');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/', function () {
-    return Inertia::render('Home', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-})->name('home')->middleware('auth');
+Route::get('/login', function () {
+    return view('auth.login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('auth.register');
+})->name('register');
+
+
+// Rota principal que chama o método index do HomeController
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+
 
 
 Route::middleware('auth')->group(function () {

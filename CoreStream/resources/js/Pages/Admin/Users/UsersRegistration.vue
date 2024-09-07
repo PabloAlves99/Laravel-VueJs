@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Head title="Users Registration" />
         <!-- Container -->
         <div class="container-fixed">
         <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
@@ -58,6 +59,7 @@
 </template>
 
 <script setup>
+import { Head } from '@inertiajs/vue3';
 const props = defineProps({
     users: Object,
 });

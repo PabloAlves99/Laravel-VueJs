@@ -8,7 +8,7 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function index()
+    public function registration()
     {
         $users = User::paginate(10);
 
