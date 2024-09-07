@@ -1,10 +1,10 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Admin\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
-use App\Models\User;
 
 // Route::get("/test", function () {
 //     $users = User::paginate(14);
@@ -13,12 +13,7 @@ use App\Models\User;
 //     ]);
 // })->name('users');
 
-Route::get("/users", function () {
-    $users = User::paginate(10);
-    return Inertia::render('Users', [
-        'users' => $users,
-    ]);
-})->name('users');
+Route::get('/users', [UserController::class,'index'])->name('users.registration');
 
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
