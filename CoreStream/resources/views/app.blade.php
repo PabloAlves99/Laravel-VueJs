@@ -4656,7 +4656,10 @@ License: https://keenthemes.com/metronic/tailwind/docs/getting-started/license
            </div>
            <div class="menu-item px-4 py-1.5">
             <a class="btn btn-sm btn-light justify-center" href="html/demo1/authentication/classic/sign-in.html">
-             Log out
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit">Log out</button>
+            </form>
             </a>
            </div>
           </div>
