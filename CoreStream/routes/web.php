@@ -2,36 +2,22 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
-use Illuminate\Foundation\Application;
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-// Route::get("/test", function () {
-//     $users = User::paginate(14);
-//     return Inertia::render('', [
-//         'users' => $users,
-//     ]);
-// })->name('users');
-
 Route::get('/users', [UserController::class,'registration'])->name('users.registration');
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-Route::get('/login', function () {
-    return Inertia::render('Auth.login');
-})->name('login');
-
 Route::get('/register', function () {
-    return Inertia::render('Auth.register');
+    return view('Auth.register');
 })->name('register');
 
-// Rota principal que chama o método index do HomeController
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-
+Route::get('/', function () {
+    return Inertia::render('Home');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
