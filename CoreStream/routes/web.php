@@ -11,10 +11,6 @@ Route::get('/register', function () {
     return view('Auth.register');
 })->name('register');
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::get('/', function () {
     return Inertia::render('Home');
 })->middleware(['auth', 'verified'])->name('Home');
