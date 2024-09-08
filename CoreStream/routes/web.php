@@ -21,13 +21,12 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/login', function () {
-    return view('auth.login');
+    return Inertia::render('Auth.login');
 })->name('login');
 
 Route::get('/register', function () {
-    return view('auth.register');
+    return Inertia::render('Auth.register');
 })->name('register');
-
 
 // Rota principal que chama o método index do HomeController
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
+use Inertia\Inertia;
 
 class HomeController extends Controller
 {
@@ -30,7 +31,7 @@ class HomeController extends Controller
     // Método principal que renderiza a view home
     public function index()
     {
-        return view('home', array_merge([
+        return Inertia::render('Home', array_merge([
             'canLogin' => $this->canLogin(),
             'canRegister' => $this->canRegister(),
         ], $this->getAppVersions()));
