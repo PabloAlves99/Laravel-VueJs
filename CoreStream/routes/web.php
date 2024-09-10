@@ -8,7 +8,7 @@ use Inertia\Inertia;
 Route::get('/users', [UserController::class,'registration'])->name('users.registration');
 
 Route::get('/register', function () {
-    return view('Auth.register');
+    return Inertia::render('Auth/Register');
 })->name('register');
 
 Route::get('/', function () {

@@ -23,9 +23,13 @@ class RegistrationTest extends TestCase
             'email' => 'test@example.com',
             'password' => 'password',
             'password_confirmation' => 'password',
+            'remember_token' => '6',
+            'login' => 'Test-User',
+            'phone' => '31970707070',
+            'profile' => 'Adm',
         ]);
 
         $this->assertAuthenticated();
-        $response->assertRedirect(route('dashboard', absolute: false));
+        $response->assertRedirect(route('Home', absolute: false));
     }
 }
