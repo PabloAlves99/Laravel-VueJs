@@ -8,11 +8,11 @@ use Inertia\Inertia;
 
 class UserController extends Controller
 {
-    public function registration()
+    public function registered()
     {
         $users = User::paginate(10);
 
-        return Inertia::render('Admin/Users/UsersRegistration', [
+        return Inertia::render('Admin/Users/UsersRegistered', [
             'users' => $users,
         ]);
     }

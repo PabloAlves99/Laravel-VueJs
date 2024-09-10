@@ -1,19 +1,21 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-Route::get('/users', [UserController::class,'registration'])->name('users.registration');
-
-Route::get('/register', function () {
-    return Inertia::render('Auth/Register');
-})->name('register');
 
 Route::get('/', function () {
     return Inertia::render('Home');
 })->middleware(['auth', 'verified'])->name('Home');
+
+Route::prefix("user")->group(function () {
+    Route::get('/registered', [UserController::class,'registered'])->name('users.registered');
+    Route::get('/register', [RegisteredUserController::class, 'create'])->name('users.create.register');
+    Route::post('/register', [RegisteredUserController::class, 'store'])->name('users.store.register');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
