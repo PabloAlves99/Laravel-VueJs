@@ -1,137 +1,219 @@
 <template>
-    <div>
-        <Head title="Users Registration" />
-        <!-- Container -->
-        <div class="container-fixed">
-        <div class="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
-        <div class="flex flex-col justify-center gap-2">
-        <h1 class="text-xl font-semibold leading-none text-gray-900">
-            Registered Users
-        </h1>
-        <div class="flex items-center gap-2 text-sm font-normal text-gray-700">
-            List of users registered in the database with main contact information
-        </div>
-        </div>
-        <div class="flex items-center gap-2.5">
-        <a class="btn btn-sm btn-light" href="#">
-            View Profile
-        </a>
-        </div>
-        </div>
-        </div>
-        <!-- End of Container -->
-        <!-- Container: list of users-->
-        <div class="container-fixed list-users">
-
-            <h1 class="title-list-users">User List</h1>
-            <div class="grid gap-5 lg:gap-7.5">
-
-                <div class="container-user-table-list-users">
-                    <table class="user-table-list-users">
-                        <thead class = "thead-list-users">
-                            <tr>
-                                <th class = "th-list-users">Login</th>
-                                <th class = "th-list-users">Name</th>
-                                <th class = "th-list-users">Phone</th>
-                                <th class = "th-list-users">Profile</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="user in users.data" :key="user.id">
-                                <td>{{ user.login }}</td>
-                                <td>{{ user.name }}</td>
-                                <td>{{ user.phone }}</td>
-                                <td>{{ user.profile }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-            <div class="pagination-list-users">
-                <button @click="previousPage" :disabled="!users.prev_page_url" class="pagination-list-users-button">Anterior</button>
-                <button @click="nextPage" :disabled="!users.next_page_url" class="pagination-list-users-button">Próximo</button>
-                <span class="pagination-list-users-info">Página {{ users.current_page }} de {{ users.last_page }}</span>
+  <div class="container-fixed">
+    <div class="grid">
+      <Head title="Users Registration" />
+      <div class="card card-grid min-w-full">
+        <div class="card-header py-5 flex-wrap">
+          <h3 class="card-title">Team Members</h3>
+          <div class="flex gap-6">
+            <div class="relative">
+              <i
+                class="ki-outline ki-magnifier leading-none text-md text-gray-500 absolute top-1/2 left-0 -translate-y-1/2 ml-3"
+              >
+              </i>
+              <input
+                class="input input-sm pl-8"
+                placeholder="Search Members"
+                type="text"
+              />
             </div>
-
+          </div>
         </div>
+        <div class="card-body">
+          <div data-datatable="true" data-datatable-page-size="5">
+            <div class="scrollable-x-auto">
+              <table
+                class="table table-auto table-border"
+                data-datatable-table="true"
+                id="grid_table"
+              >
+                <thead>
+                  <tr>
+                    <th class="w-[60px]">
+                      <input
+                        class="checkbox checkbox-sm"
+                        data-datatable-check="true"
+                        type="checkbox"
+                      />
+                    </th>
+                    <th class="min-w-[175px]">
+                      <span class="sort asc">
+                        <span class="sort-label"> Member </span>
+                        <span class="sort-icon"> </span>
+                      </span>
+                    </th>
+                    <th class="min-w-[150px]">
+                      <span class="sort">
+                        <span class="sort-label"> Email </span>
+                        <span class="sort-icon"> </span>
+                      </span>
+                    </th>
+                    <th class="min-w-[125px]">
+                      <span class="sort">
+                        <span class="sort-label"> Profile </span>
+                        <span class="sort-icon"> </span>
+                      </span>
+                    </th>
+                    <th class="w-[80px]"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="user in users.data" :key="user.id">
+                    <td>
+                      <input
+                        class="checkbox checkbox-sm"
+                        data-datatable-row-check="true"
+                        type="checkbox"
+                        value="1"
+                      />
+                    </td>
+                    <td>
+                      <div class="flex items-center gap-2.5">
+                        <img alt="User Avatar" class="h-9 rounded-full" src="/assets/media/avatars/IMG_3346.png"/>
+                        <div class="flex flex-col gap-0.5">
+                          <a
+                            class="leading-none font-semibold text-sm text-gray-900 hover:text-primary"
+                            href="#"
+                          >
+                            {{ user.name }}
+                          </a>
+                          <span class="text-2sm text-gray-600">
+                            {{ user.login }}
+                          </span>
+                        </div>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="flex items-center gap-1.5">
+                        <span class="leading-none text-gray-700">
+                          {{ user.email }}
+                        </span>
+                      </div>
+                    </td>
+                    <td>
+                      <span class="badge badge-sm badge-outline"
+                      :class="getProfileClass(user.profile)"
+                      >
+                        {{ user.profile }}
+                      </span>
+                    </td>
+                    <td>
+                      <a class="btn btn-sm btn-light" href="#"> Edit </a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div
+              class="card-footer justify-center md:justify-between flex-col md:flex-row gap-3 text-gray-600 text-2sm font-medium"
+            >
+              <div class="flex items-center gap-2">
+                Show
+                <select
+                  class="select select-sm w-16"
+                  data-datatable-size="true"
+                  name="perpage"
+                >
+                  <option value="10">10</option>
+                </select>
+                per page
+              </div>
+              <div class="flex items-center gap-4">
+                <span data-datatable-info="true"> </span>
+                <div class="pagination" data-datatable-pagination="true"></div>
+              </div>
+              <div class="pagination">
+                <button class="btn">
+                  <i
+                    class="ki-outline ki-black-left"
+                    @click="previousPage"
+                    :disabled="!users.prev_page_url"
+                  >
+                  </i>
+                </button>
+                <span class="input input-sm"
+                  >Página {{ users.current_page }} de
+                  {{ users.last_page }}</span
+                >
+                <button class="btn">
+                  <i
+                    class="ki-outline ki-black-right"
+                    @click="nextPage"
+                    :disabled="!users.next_page_url"
+                  >
+                  </i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 
 <script setup>
-import { Head } from '@inertiajs/vue3';
+import { Head } from "@inertiajs/vue3";
+
+const getProfileClass = (profile) => {
+  switch (profile) {
+    case 'Adm':
+      return ' badge-primary'; // Classe CSS para developer
+    case 'Advogado':
+      return ' badge-success'; // Classe CSS para designer
+    case 'Atendente':
+          return ' badge-warning';
+    default:
+      return 'badge-primary';// Classe CSS para manager
+
+  }
+};
+
 const props = defineProps({
-    users: Object,
+  users: Object,
 });
 
 const nextPage = () => {
-    if (props.users.next_page_url) {
-        window.location.href = props.users.next_page_url;
-    }
+  if (props.users.next_page_url) {
+    window.location.href = props.users.next_page_url;
+  }
 };
 
 const previousPage = () => {
-    if (props.users.prev_page_url) {
-        window.location.href = props.users.prev_page_url;
-    }
+  if (props.users.prev_page_url) {
+    window.location.href = props.users.prev_page_url;
+  }
 };
 </script>
 
 <style scoped>
-.list-users, .user-page-title{
-    text-align: center;
-}
-.title-list-users {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    font-weight: bold;
-}
-
-.user-table-list-users {
-    width: 100%;
-    border-collapse: collapse;
-    margin-bottom: 20px;
-}
-
-.user-table-list-users th{
-    font-size: 1.4rem;
-}
-
-.user-table-list-users th, .user-table-list-users td {
-    padding: 12px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-}
-
 .pagination-list-users {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
-
-.pagination-list-users-button {
-    background-color: #A3C9D9;
-    color: #0D0E12;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: background-color 0.3s;
-}
-
-.pagination-list-users-button:hover:not(:disabled) {
-    background-color: #A3C9D9;
-}
-
-.pagination-list-users-button:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pagination-list-users-info {
-    font-size: 1rem;
+  background-color: #1f212a;
+  padding: 5px;
+  border-radius: 7px;
+  border: solid 1px #ffffff1f;
 }
 
+.pagination-list-users-button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+
+.pagination-list-users-button:hover:not(:disabled) {
+  background-color: #5757575b;
+}
+
+.pagination-list-users-button:disabled {
+  cursor: not-allowed;
+}
 </style>
