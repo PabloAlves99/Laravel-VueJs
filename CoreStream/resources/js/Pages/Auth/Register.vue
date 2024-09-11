@@ -1,154 +1,155 @@
 <script setup>
-import GuestLayout from '@/Layouts/GuestLayout.vue';
-import InputError from '@/Components/InputError.vue';
-import InputLabel from '@/Components/InputLabel.vue';
-import PrimaryButton from '@/Components/PrimaryButton.vue';
-import TextInput from '@/Components/TextInput.vue';
-import { Head, Link, useForm } from '@inertiajs/vue3';
+import InputError from "@/Components/InputError.vue";
+import InputLabel from "@/Components/InputLabel.vue";
+import PrimaryButton from "@/Components/PrimaryButton.vue";
+import TextInput from "@/Components/TextInput.vue";
+import { Head, Link, useForm } from "@inertiajs/vue3";
 
 const form = useForm({
-    name: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
-    login: '',
-    phone: '',
-    profile: '',
+    name: "",
+    email: "",
+    password: "",
+    password_confirmation: "",
+    login: "",
+    phone: "",
+    profile: "",
 });
 
-const profileOptions = ['Adm', 'adv', 'atendente'];
+const profileOptions = ["Adm", "adv", "atendente"];
 const submit = () => {
     if (!profileOptions.includes(form.profile)) {
-        alert('Perfil inválido. Escolha entre: Adm, adv, atendente.');
+        alert("Perfil inválido. Escolha entre: Adm, adv, atendente.");
         return;
     }
 
-    form.post(route('register'), {
-        onFinish: () => form.reset('password', 'password_confirmation'),
+    form.post(route("users.create.register"), {
+        onFinish: () => form.reset("password", "password_confirmation"),
     });
 };
 </script>
 
 <template>
-    <GuestLayout>
-        <Head title="Register" />
+    <div class="container-fixed">
+        <div class="container-form-register">
 
-        <form @submit.prevent="submit">
-            <div>
-                <InputLabel for="name" value="Name" />
+            <Head title="Register" />
 
-                <TextInput
-                    id="name"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.name"
-                    required
-                    autofocus
-                    autocomplete="name"
-                />
+            <form @submit.prevent="submit" class="form-register">
 
-                <InputError class="mt-2" :message="form.errors.name" />
-            </div>
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                        <InputLabel class="form-label max-w-32" for="name" value="Name" />
+                        <TextInput id="name" type="text" class="input" v-model="form.name" required autofocus
+                            autocomplete="name" />
 
-            <div class="mt-4">
-                <InputLabel for="email" value="Email" />
+                    </div>
+                </div>
+                <InputError class="form-hint input-center" :message="form.errors.name" />
 
-                <TextInput
-                    id="email"
-                    type="email"
-                    class="mt-1 block w-full"
-                    v-model="form.email"
-                    required
-                    autocomplete="username"
-                />
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
 
-                <InputError class="mt-2" :message="form.errors.email" />
-            </div>
+                        <InputLabel class="form-label max-w-32" for="email" value="Email" />
 
-            <div class="mt-4">
-                <InputLabel for="password" value="Password" />
+                        <TextInput id="email" type="email" class="input" v-model="form.email" required
+                            autocomplete="username" placeholder="exemplo@exemplo.com" />
 
-                <TextInput
-                    id="password"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password"
-                    required
-                    autocomplete="new-password"
-                />
+                    </div>
+                </div>
+                <InputError class="form-hint input-center" :message="form.errors.email" />
 
-                <InputError class="mt-2" :message="form.errors.password" />
-            </div>
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
 
-            <div class="mt-4">
-                <InputLabel for="password_confirmation" value="Confirm Password" />
+                        <InputLabel class="form-label max-w-32" for="password" value="Password" />
 
-                <TextInput
-                    id="password_confirmation"
-                    type="password"
-                    class="mt-1 block w-full"
-                    v-model="form.password_confirmation"
-                    required
-                    autocomplete="new-password"
-                />
+                        <TextInput id="password" type="password" class="input" v-model="form.password" required
+                            autocomplete="new-password" />
 
-                <InputError class="mt-2" :message="form.errors.password_confirmation" />
-            </div>
+                    </div>
+                </div>
+                <InputError class="form-hint input-center" :message="form.errors.password" />
 
-            <div class="mt-4">
-                <InputLabel for="login" value="Login" />
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
 
-                <TextInput
-                    id="login"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.login"
-                    required
-                    autofocus
-                    autocomplete="username"
-                />
-            </div>
+                        <InputLabel class="form-label max-w-32" for="password_confirmation" value="Confirm Password" />
 
-            <div class="mt-4">
-                <InputLabel for="phone" value="Phone" />
+                        <TextInput id="password_confirmation" type="password" class="input"
+                            v-model="form.password_confirmation" required autocomplete="new-password" />
 
-                <TextInput
-                    id="phone"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.phone"
-                    required
-                    autofocus
-                />
-            </div>
+                    </div>
+                </div>
+                <InputError class="form-hint input-center" :message="form.errors.password_confirmation" />
 
-            <div class="mt-4">
-                <InputLabel for="profile" value="Profile" />
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
 
-                <TextInput
-                    id="profile"
-                    type="text"
-                    class="mt-1 block w-full"
-                    v-model="form.profile"
-                    required
-                    autofocus
-                    autocomplete="profile"
-                    placeholder="Adm, Advogado ou Atendente"
-                />
-            </div>
+                        <InputLabel class="form-label max-w-32" for="login" value="Login" />
 
-            <div class="flex items-center justify-end mt-4">
-                <Link
-                    :href="route('login')"
-                    class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                >
+                        <TextInput id="login" type="text" class="input" v-model="form.login" required autofocus
+                            autocomplete="username" />
+                    </div>
+                </div>
+
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+
+                        <InputLabel class="form-label max-w-32" for="phone" value="Phone" />
+
+                        <TextInput id="phone" type="text" class="input" v-model="form.phone" required autofocus />
+                    </div>
+                </div>
+
+                <div class="w-full pa-t5">
+                    <div class="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+
+                        <InputLabel class="form-label max-w-32" for="profile" value="Profile" />
+
+                        <select class="select" name="profile" id="profile" v-model="form.profile">
+                            <option value="atendente">
+                                Atendente
+                            </option>
+                            <option value="Adm">
+                                Administrador
+                            </option>
+                            <option value="adv">
+                                Advogado
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    <Link :href="route('login')"
+                        class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                     Already registered?
-                </Link>
+                    </Link>
 
-                <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Register
-                </PrimaryButton>
-            </div>
-        </form>
-    </GuestLayout>
+                    <PrimaryButton class="ms-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                        Register
+                    </PrimaryButton>
+                </div>
+            </form>
+        </div>
+    </div>
 </template>
+
+<style scoped>
+.container-form-register {
+    width: 50%;
+    margin: 0 auto;
+}
+
+.input-center {
+    text-align: center;
+}
+
+.form-register {
+    margin-top: 50px;
+}
+
+.pa-t5 {
+    padding-top: 20px;
+}
+</style>
