@@ -43,7 +43,7 @@
                                 <div
                                     class="menu-link text-sm text-gray-700 font-medium menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-semibold menu-item-here:font-semibold">
                                     <span class="menu-title text-nowrap">
-                                        Profiles
+                                        Usuários
                                     </span>
                                     <span class="menu-arrow flex lg:hidden">
                                         <i class="ki-filled ki-plus text-2xs menu-item-show:hidden">
@@ -58,33 +58,33 @@
                                             <div class="menu menu-default menu-fit flex-col">
                                                 <h3
                                                     class="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
-                                                    Profiles
+                                                    Usuários
                                                 </h3>
                                                 <div class="grid lg:grid-cols-2 lg:gap-5">
                                                     <div class="flex flex-col">
                                                         <div class="menu-item">
                                                             <a class="menu-link"
-                                                                href="html/demo1/public-profile/profiles/default.html"
+                                                                href="/admin/registered"
                                                                 tabindex="0">
                                                                 <span class="menu-icon">
                                                                     <i class="ki-filled ki-badge">
                                                                     </i>
                                                                 </span>
                                                                 <span class="menu-title grow-0">
-                                                                    Default
+                                                                    Usuários Cadastrados
                                                                 </span>
                                                             </a>
                                                         </div>
                                                         <div class="menu-item">
                                                             <a class="menu-link"
-                                                                href="html/demo1/public-profile/profiles/creator.html"
+                                                                href="/admin/register"
                                                                 tabindex="0">
                                                                 <span class="menu-icon">
                                                                     <i class="ki-filled ki-coffee">
                                                                     </i>
                                                                 </span>
                                                                 <span class="menu-title grow-0">
-                                                                    Creator
+                                                                    Cadastrar usuários
                                                                 </span>
                                                             </a>
                                                         </div>
