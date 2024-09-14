@@ -3712,8 +3712,8 @@
                                     </div>
                                 </div>
                                 <div class="menu-item px-4 py-1.5">
-                                    <form method="GET">
-                                        <button type="submit" class="btn btn-sm btn-light justify-center" @click="logout">
+                                    <form @submit.prevent="logout">
+                                        <button type="submit" class="btn btn-sm btn-light justify-center">
                                             Log out
                                         </button>
                                     </form>
