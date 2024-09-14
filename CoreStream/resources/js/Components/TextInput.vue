@@ -24,3 +24,9 @@ defineExpose({ focus: () => input.value.focus() });
         ref="input"
     />
 </template>
+
+<style>
+input{
+    border: solid #4B5675 1px;
+}
+</style>
