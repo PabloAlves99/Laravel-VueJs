@@ -159,7 +159,7 @@ const props = defineProps({
 });
 </script>
 
-<style scoped>
+<!-- <style scoped>
 .pagination-list-users {
   display: flex;
   justify-content: center;
@@ -189,4 +189,4 @@ const props = defineProps({
 .pagination-list-users-button:disabled {
   cursor: not-allowed;
 }
-</style>
+</style> -->
