@@ -1,4 +1,5 @@
 <template>
+    <MetronicLayout>
   <div class="container-fixed">
     <div class="grid">
       <Head title="Users Registration" />
@@ -58,7 +59,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="user in users.data" :key="user.id">
+                  <tr v-for="user in users" :key="user.id">
                     <td>
                       <input
                         class="checkbox checkbox-sm"
@@ -127,38 +128,18 @@
                 <span data-datatable-info="true"> </span>
                 <div class="pagination" data-datatable-pagination="true"></div>
               </div>
-              <div class="pagination">
-                <button class="btn">
-                  <i
-                    class="ki-outline ki-black-left"
-                    @click="previousPage"
-                    :disabled="!users.prev_page_url"
-                  >
-                  </i>
-                </button>
-                <span class="input input-sm"
-                  >Página {{ users.current_page }} de
-                  {{ users.last_page }}</span
-                >
-                <button class="btn">
-                  <i
-                    class="ki-outline ki-black-right"
-                    @click="nextPage"
-                    :disabled="!users.next_page_url"
-                  >
-                  </i>
-                </button>
-              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+  </MetronicLayout>
 </template>
 
 <script setup>
 import { Head } from "@inertiajs/vue3";
+import MetronicLayout from "@/Layouts/MetronicLayout.vue";
 
 const getProfileClass = (profile) => {
   switch (profile) {
@@ -176,18 +157,6 @@ const getProfileClass = (profile) => {
 const props = defineProps({
   users: Object,
 });
-
-const nextPage = () => {
-  if (props.users.next_page_url) {
-    window.location.href = props.users.next_page_url;
-  }
-};
-
-const previousPage = () => {
-  if (props.users.prev_page_url) {
-    window.location.href = props.users.prev_page_url;
-  }
-};
 </script>
 
 <style scoped>

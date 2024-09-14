@@ -3713,6 +3713,7 @@
                                 </div>
                                 <div class="menu-item px-4 py-1.5">
                                     <form method="POST" action="{{ route('logout') }}">
+
                                         <button type="submit" class="btn btn-sm btn-light justify-center">Log
                                             out</button>
                                     </form>
@@ -3728,3 +3729,5 @@
     </header>
     <!-- End of Header -->
 </template>
+
+

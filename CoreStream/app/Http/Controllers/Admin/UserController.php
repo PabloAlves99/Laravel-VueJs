@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function registered()
     {
-        $users = User::paginate(10);
+        $users = User::all();
 
         return Inertia::render('Admin/Users/UsersRegistered', [
             'users' => $users,
