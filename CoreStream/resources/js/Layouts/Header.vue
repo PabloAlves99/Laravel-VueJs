@@ -32,7 +32,7 @@
                         <div class="menu flex-col lg:flex-row gap-5 lg:gap-7.5" data-menu="true" id="megamenu">
                             <div class="menu-item active">
                                 <a class="menu-link text-nowrap text-sm text-gray-700 font-medium menu-item-hover:text-primary menu-item-active:text-gray-900 menu-item-active:font-semibold"
-                                    href="html/demo1.html">
+                                    href="/">
                                     <span class="menu-title text-nowrap">
                                         Home
                                     </span>
