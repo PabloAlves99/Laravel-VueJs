@@ -80,7 +80,7 @@
               <span
                 class="menu-title text-sm font-medium text-gray-800 menu-item-active:text-primary menu-link-hover:!text-primary"
               >
-                Dashboards
+                Home
               </span>
               <span
                 class="menu-arrow text-gray-400 w-[20px] shrink-0 justify-end ml-1 mr-[-10px]"
@@ -99,7 +99,7 @@
               <div class="menu-item">
                 <a
                   class="menu-link border border-transparent items-center grow menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg gap-[14px] pl-[10px] pr-[10px] py-[8px]"
-                  href="html/demo1.html"
+                  href="/"
                   tabindex="0"
                 >
                   <span
@@ -116,7 +116,7 @@
               <div class="menu-item">
                 <a
                   class="menu-link border border-transparent items-center grow menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg gap-[14px] pl-[10px] pr-[10px] py-[8px]"
-                  href="html/demo1/dashboards/dark-sidebar.html"
+                  href="/"
                   tabindex="0"
                 >
                   <span
@@ -136,7 +136,7 @@
             <span
               class="menu-heading uppercase text-2sm font-medium text-gray-500 pl-[10px] pr-[10px]"
             >
-              User
+              Usuários
             </span>
           </div>
           <div
@@ -156,7 +156,7 @@
               <span
                 class="menu-title text-sm font-medium text-gray-800 menu-item-active:text-primary menu-link-hover:!text-primary"
               >
-                Profiles
+                Usuários
               </span>
               <span
                 class="menu-arrow text-gray-400 w-[20px] shrink-0 justify-end ml-1 mr-[-10px]"
@@ -188,7 +188,7 @@
                   <span
                     class="menu-title text-2sm font-normal mr-1 text-gray-800 menu-item-active:text-primary menu-item-active:font-medium menu-link-hover:!text-primary"
                   >
-                    Profiles
+                    Usuários
                   </span>
                   <span
                     class="menu-arrow text-gray-400 w-[20px] shrink-0 justify-end ml-1 mr-[-10px]"
@@ -207,7 +207,7 @@
                   <div class="menu-item">
                     <a
                       class="menu-link border border-transparent items-center grow menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg gap-[5px] pl-[10px] pr-[10px] py-[8px]"
-                      href="html/demo1/public-profile/profiles/default.html"
+                      href="/admin/registered"
                       tabindex="0"
                     >
                       <span
@@ -217,14 +217,14 @@
                       <span
                         class="menu-title text-2sm font-normal text-gray-800 menu-item-active:text-primary menu-item-active:font-semibold menu-link-hover:!text-primary"
                       >
-                        Default
+                        Usuários cadastrados
                       </span>
                     </a>
                   </div>
                   <div class="menu-item">
                     <a
                       class="menu-link border border-transparent items-center grow menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg gap-[5px] pl-[10px] pr-[10px] py-[8px]"
-                      href="html/demo1/public-profile/profiles/creator.html"
+                      href="/admin/register"
                       tabindex="0"
                     >
                       <span
@@ -234,7 +234,7 @@
                       <span
                         class="menu-title text-2sm font-normal text-gray-800 menu-item-active:text-primary menu-item-active:font-semibold menu-link-hover:!text-primary"
                       >
-                        Creator
+                        Cadastrar Usuários
                       </span>
                     </a>
                   </div>
