@@ -69,7 +69,11 @@
                     </td>
                     <td>
                       <div class="flex items-center gap-2.5">
-                        <img alt="User Avatar" class="h-9 rounded-full" src="/assets/media/avatars/IMG_3346.png"/>
+                        <img
+                          alt="User Avatar"
+                          class="h-9 rounded-full"
+                          src="/assets/media/avatars/IMG_3346.png"
+                        />
                         <div class="flex flex-col gap-0.5">
                           <a
                             class="leading-none font-semibold text-sm text-gray-900 hover:text-primary"
@@ -91,8 +95,9 @@
                       </div>
                     </td>
                     <td>
-                      <span class="badge badge-sm badge-outline"
-                      :class="getProfileClass(user.profile)"
+                      <span
+                        class="badge badge-sm badge-outline"
+                        :class="getProfileClass(user.profile)"
                       >
                         {{ user.profile }}
                       </span>
@@ -157,15 +162,14 @@ import { Head } from "@inertiajs/vue3";
 
 const getProfileClass = (profile) => {
   switch (profile) {
-    case 'Adm':
-      return ' badge-primary'; // Classe CSS para developer
-    case 'Advogado':
-      return ' badge-success'; // Classe CSS para designer
-    case 'Atendente':
-          return ' badge-warning';
+    case "Adm":
+      return " badge-primary";
+    case "Advogado":
+      return " badge-success";
+    case "Atendente":
+      return " badge-warning";
     default:
-      return 'badge-primary';// Classe CSS para manager
-
+      return "badge-primary";
   }
 };
 
