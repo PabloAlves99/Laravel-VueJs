@@ -3712,10 +3712,10 @@
                                     </div>
                                 </div>
                                 <div class="menu-item px-4 py-1.5">
-                                    <form method="POST" action="{{ route('logout') }}">
-
-                                        <button type="submit" class="btn btn-sm btn-light justify-center">Log
-                                            out</button>
+                                    <form method="GET">
+                                        <button type="submit" class="btn btn-sm btn-light justify-center" @click="logout">
+                                            Log out
+                                        </button>
                                     </form>
                                 </div>
                             </div>
@@ -3730,4 +3730,14 @@
     <!-- End of Header -->
 </template>
 
+<script>
+import { Inertia } from '@inertiajs/inertia';
 
+export default {
+    methods: {
+        logout() {
+            Inertia.post(route('logout'));
+        }
+    }
+};
+</script>
