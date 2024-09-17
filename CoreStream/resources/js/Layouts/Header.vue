@@ -3453,8 +3453,8 @@
                                 <div class="flex items-center gap-2">
                                     <img alt="" class="size-9 rounded-full border-2 border-success"
                                         src="assets/media/avatars/300-2.png">
-                                    <div class="flex flex-col gap-1.5">
-                                        <span class="text-sm text-gray-800 font-semibold leading-none" v-if="$page.props.auth.user">
+                                    <div class="flex flex-col gap-1.5"  v-if="$page.props.auth.user">
+                                        <span class="text-sm text-gray-800 font-semibold leading-none">
                                             {{ $page.props.auth.user.name }}
                                         </span>
                                         <a class="text-xs text-gray-600 hover:text-primary font-medium leading-none"

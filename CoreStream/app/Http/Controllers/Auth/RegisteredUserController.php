@@ -52,6 +52,11 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
 
-        return redirect(route('Home', absolute: false));
+        return redirect()
+                    ->route('users.create.register')
+                    ->with('flash', [
+                        'success' => 'Usuário ' . $user->name . ' cadastrado com sucesso!'
+                    ]
+                );
     }
 }

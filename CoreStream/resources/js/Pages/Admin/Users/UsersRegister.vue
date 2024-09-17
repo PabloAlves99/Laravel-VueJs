@@ -16,15 +16,23 @@ const form = useForm({
   profile: "",
 });
 
-const profileOptions = ["Adm", "adv", "atendente"];
+const profileOptions = ["Adm", "Advogado", "Atendente"];
 const submit = () => {
   if (!profileOptions.includes(form.profile)) {
     alert("Perfil inválido. Escolha entre: Adm, adv, atendente.");
     return;
   }
 
-  form.post(route("users.create.register"), {
-    onFinish: () => form.reset("password", "password_confirmation"),
+    form.post(route("users.create.register"), {
+        onSuccess: () => {
+            form.reset();
+        },
+        onFinish: () => {
+            form.reset(
+                "password",
+                "password_confirmation"
+            );
+        }
   });
 };
 </script>
@@ -34,6 +42,10 @@ const submit = () => {
     <div class="container-fixed">
       <div class="container-form-register">
         <Head title="Register" />
+
+        <div v-if="$page.props.flash.success" class="badge badge-lg badge-pill badge-outline badge-success">
+          {{ $page.props.flash.success }}
+        </div>
 
         <form @submit.prevent="submit" class="form-register">
           <div class="w-full pa-t5">
@@ -178,16 +190,16 @@ const submit = () => {
                 id="profile"
                 v-model="form.profile"
               >
-                <option value="atendente">Atendente</option>
+                <option value="Atendente">Atendente</option>
                 <option value="Adm">Administrador</option>
-                <option value="adv">Advogado</option>
+                <option value="Advogado">Advogado</option>
               </select>
             </div>
           </div>
 
           <div class="flex items-center justify-end mt-4">
             <Link
-              :href="route('login')"
+              :href="route('users.create.register')"
               class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               Already registered?
