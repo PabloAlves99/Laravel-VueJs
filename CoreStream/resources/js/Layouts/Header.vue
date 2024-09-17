@@ -3449,6 +3449,12 @@
                                 src="assets/media/avatars/300-2.png">
                         </div>
                         <div class="menu-dropdown menu-default light:border-gray-300 w-full max-w-[250px]">
+                            <span v-if="$page.props.auth.user"
+                                class="badge badge-xs badge-outline"
+                                :class="getProfileClass($page.props.auth.user.profile)"
+                            >
+                                {{ $page.props.auth.user.profile }}
+                            </span>
                             <div class="flex items-center justify-between px-5 py-1.5 gap-1.5">
                                 <div class="flex items-center gap-2">
                                     <img alt="" class="size-9 rounded-full border-2 border-success"
@@ -3463,12 +3469,6 @@
                                         </a>
                                     </div>
                                 </div>
-                                <span v-if="$page.props.auth.user"
-                                    class="badge badge-xs badge-outline"
-                                    :class="getProfileClass($page.props.auth.user.profile)"
-                                >
-                                    {{ $page.props.auth.user.profile }}
-                                </span>
                             </div>
                             <div class="menu-separator">
                             </div>
