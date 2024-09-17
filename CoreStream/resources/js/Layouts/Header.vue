@@ -3463,8 +3463,11 @@
                                         </a>
                                     </div>
                                 </div>
-                                <span class="badge badge-xs badge-primary badge-outline">
-                                    Pro
+                                <span v-if="$page.props.auth.user"
+                                    class="badge badge-xs badge-outline"
+                                    :class="getProfileClass($page.props.auth.user.profile)"
+                                >
+                                    {{ $page.props.auth.user.profile }}
                                 </span>
                             </div>
                             <div class="menu-separator">
@@ -3736,6 +3739,18 @@ export default {
         logout() {
             Inertia.post(route('logout'));
             window.location.href = route('login')
+        },
+        getProfileClass(profile) {
+            switch (profile) {
+                case 'Adm':
+                    return 'badge-primary';
+                case 'Advogado':
+                    return 'badge-success';
+                case 'Atendente':
+                    return 'badge-warning';
+                default:
+                    return 'badge-primary';
+            }
         }
     }
 };
