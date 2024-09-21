@@ -1,8 +1,8 @@
 <template>
   <MetronicLayout>
+    <Head title="Users Registration" />
     <div class="container-fixed">
       <div class="grid">
-        <Head title="Users Registration" />
         <div class="card card-grid min-w-full">
           <div class="card-header py-5 flex-wrap">
             <h3 class="card-title">Team Members</h3>
@@ -183,7 +183,7 @@ const formatDate = (date) => {
 const searchTerm = ref("");
 
 const filteredUsers = computed(() => {
-  return props.users.filter(user =>
+  return props.users.filter((user) =>
     user.name.toLowerCase().includes(searchTerm.value.toLowerCase())
   );
 });
