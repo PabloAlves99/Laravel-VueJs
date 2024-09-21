@@ -17,7 +17,7 @@
                   placeholder="Search Members"
                   type="text"
                   v-model="searchTerm"
-                  @input="filterUsers"
+                  @input="filteredUsers"
                 />
               </div>
             </div>
