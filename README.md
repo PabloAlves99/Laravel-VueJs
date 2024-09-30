@@ -1,6 +1,6 @@
 <p align="center">
   <a href="#" target="_blank">
-    <img src="./public/assets/media/app/tridente.png" width="400" alt="Tridente Logo">
+    <img src="CoreStream/public/assets/media/app/tridente.png" width="400" alt="Tridente Logo">
   </a>
   <h1 align="center">Poseidon</h1>
 </p>
