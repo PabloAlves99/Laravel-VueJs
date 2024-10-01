@@ -20,12 +20,9 @@ defineProps({
     <MetronicLayout>
         <div class="container-fixed">
         <Head title="Profile" />
-        <template>
-            <h2 >Profile</h2>
-        </template>
 
-        <div >
-            <div >
+        <div class="flex justify-center items-center">
+            <div class="mw-50">
                 <div >
                     <UpdateProfileInformationForm
                         :must-verify-email="mustVerifyEmail"
@@ -45,3 +42,9 @@ defineProps({
         </div>
     </MetronicLayout>
 </template>
+
+<style>
+.mw-50{
+    max-width: 50%;
+}
+</style>
