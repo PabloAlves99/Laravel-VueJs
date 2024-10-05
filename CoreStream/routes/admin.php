@@ -5,8 +5,14 @@ use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ProfileController;
 
 
+Route::middleware('auth')->group(function () {
+    Route::get('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::prefix("admin")->middleware('auth')->group(function () {
     Route::get('/registered', [UserController::class,'registered'])->name('users.registered');
