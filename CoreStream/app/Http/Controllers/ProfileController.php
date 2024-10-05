@@ -38,11 +38,11 @@ class ProfileController extends Controller
         $user->save();
 
         return Redirect::route('profile.edit', $user->id)->with(
-        'flash',
-        [
-            'success' => 'Perfil atualizado com sucesso!'
-        ]
-    );
+            'flash',
+            [
+                'success' => 'Perfil atualizado com sucesso!'
+            ]
+        );
     }
 
     /**
@@ -54,11 +54,22 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        if ($user->id === $request->user()->id){
+        if (!$user) {
+            return Redirect::to('admin/registered')->with(
+                'flash',
+                [
+                    'error' => 'Usuário não encontrado!'
+                ]
+            );
+        }
+
+        if ($user->id === $request->user()->id) {
+
+            $user = $request->user();
 
             Auth::logout();
 
-            $request->user()->delete();
+            $user->delete();
 
             $request->session()->invalidate();
             $request->session()->regenerateToken();
@@ -69,15 +80,15 @@ class ProfileController extends Controller
                     'success' => 'Conta excluída com sucesso!'
                 ]
             );
-        } else {
-            $user->delete();
-
-            return Redirect::to('admin/registered')->with(
-                'flash',
-                [
-                    'success' => 'Usuário excluído com sucesso!'
-                ]
-            );
         }
+
+        $user->delete();
+
+        return Redirect::to('admin/registered')->with(
+            'flash',
+            [
+                'success' => 'Usuário excluído com sucesso!'
+            ]
+        );
     }
 }
