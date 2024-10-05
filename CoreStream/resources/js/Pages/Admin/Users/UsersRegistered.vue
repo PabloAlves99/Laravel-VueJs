@@ -117,7 +117,7 @@
                         </span>
                       </td>
                       <td>
-                        <a class="btn btn-sm btn-light" href="#"> Edit </a>
+                        <a class="btn btn-sm btn-light" :href="route('profile.edit', user.id)">Edit</a>
                       </td>
                     </tr>
                   </tbody>
