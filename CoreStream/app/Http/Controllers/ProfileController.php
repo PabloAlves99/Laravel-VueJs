@@ -37,7 +37,12 @@ class ProfileController extends Controller
 
         $user->save();
 
-        return Inertia::location(route('profile.edit', $user->id));
+        return Redirect::route('profile.edit', $user->id)->with(
+        'flash',
+        [
+            'success' => 'Perfil atualizado com sucesso!'
+        ]
+    );
     }
 
     /**
@@ -49,8 +54,30 @@ class ProfileController extends Controller
             'password' => ['required', 'current_password'],
         ]);
 
-        $user->delete();
+        if ($user->id === $request->user()->id){
 
-        return Redirect::to('admin/registered');
+            Auth::logout();
+
+            $request->user()->delete();
+
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+
+            return Redirect::to('/')->with(
+                'flash',
+                [
+                    'success' => 'Conta excluída com sucesso!'
+                ]
+            );
+        } else {
+            $user->delete();
+
+            return Redirect::to('admin/registered')->with(
+                'flash',
+                [
+                    'success' => 'Usuário excluído com sucesso!'
+                ]
+            );
+        }
     }
 }

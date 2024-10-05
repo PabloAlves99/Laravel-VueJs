@@ -1,10 +1,10 @@
 <script setup>
-import MetronicLayout from '@/Layouts/MetronicLayout.vue';
-import { Head } from '@inertiajs/vue3';
-import DeleteUserForm from './Partials/DeleteUserForm.vue';
-import UpdatePasswordForm from './Partials/UpdatePasswordForm.vue';
-import UpdateEmailForm from './Partials/UpdateEmailForm.vue';
-import UpdateProfileInformationForm from './Partials/UpdateProfileInformationForm.vue';
+import MetronicLayout from "@/Layouts/MetronicLayout.vue";
+import { Head } from "@inertiajs/vue3";
+import DeleteUserForm from "./Partials/DeleteUserForm.vue";
+import UpdatePasswordForm from "./Partials/UpdatePasswordForm.vue";
+import UpdateEmailForm from "./Partials/UpdateEmailForm.vue";
+import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm.vue";
 
 defineProps({
     mustVerifyEmail: {
@@ -17,7 +17,6 @@ defineProps({
 </script>
 
 <template>
-
     <MetronicLayout>
         <div class="container-fixed">
 
@@ -25,6 +24,9 @@ defineProps({
 
             <div class="flex justify-center items-center">
                 <div class="mw-50">
+                    <div v-if="$page.props.flash.success" class="btn btn-outline btn-success mb-4">
+                        {{ $page.props.flash.success }}
+                    </div>
                     <div>
                         <UpdateProfileInformationForm />
                     </div>

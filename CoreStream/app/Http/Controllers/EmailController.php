@@ -12,7 +12,8 @@ use Inertia\Response;
 
 class EmailController extends Controller
 {
-    public function edit(Request $request, User $user): Response{
+    public function edit(Request $request, User $user): Response
+    {
         return Inertia::render('Email/Edit', [
             'user' => $user,
         ]);
@@ -25,6 +26,14 @@ class EmailController extends Controller
 
         $user->save();
 
-        return Redirect::route('profile.edit', $user->id);
+        return Redirect::route(
+            'profile.edit',
+            $user->id
+        )->with(
+            'flash',
+            [
+                'success' => 'Email atualizado com sucesso!'
+            ]
+        );
     }
 }
