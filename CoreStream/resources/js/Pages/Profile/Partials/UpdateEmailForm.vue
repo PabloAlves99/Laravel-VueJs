@@ -15,24 +15,12 @@ defineProps({
   },
 });
 
-const emailInput = ref(null);
 const user = usePage().props.user;
 
 const form = useForm({
   name: user.name,
   email: user.email,
 });
-
-const updateEmail = () => {
-    form.put(route('email.update'), {
-        preserveScroll: true,
-        onError: () => {
-            if (form.errors.email) {
-                emailInput.value.focus();
-      }
-        },
-    });
-};
 </script>
 
 <template>

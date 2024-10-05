@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Controllers\Auth\PasswordController;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Admin\UserController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\EmailController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\EmailController;
+use App\Http\Controllers\PasswordController;
 
 
 Route::middleware('auth')->group(function () {
@@ -14,7 +13,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::put('/password/update{user}', [PasswordController::class, 'update'])->name('password.update');
+    Route::put('/password/update/{id}', [PasswordController::class, 'update'])->name('password.update');
     Route::put('/email/update/{user}', [EmailController::class, 'update'])->name('email.update');
 });
 
