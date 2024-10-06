@@ -6,9 +6,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PasswordController;
+use App\Http\Middleware\EnsureUserIsAdmin;
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', EnsureUserIsAdmin::class])->group(function () {
     Route::get('/profile/{user}', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile/{user}', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile/{user}', [ProfileController::class, 'destroy'])->name('profile.destroy');
