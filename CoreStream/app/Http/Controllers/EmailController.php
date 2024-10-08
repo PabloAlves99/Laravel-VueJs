@@ -14,7 +14,7 @@ class EmailController extends Controller
 {
     public function edit(Request $request, User $user): Response
     {
-        return Inertia::render('Email/Edit', [
+        return Inertia::render(component: 'Email/Edit', props: [
             'user' => $user,
         ]);
     }
@@ -27,11 +27,11 @@ class EmailController extends Controller
         $user->save();
 
         return Redirect::route(
-            'profile.edit',
-            $user->id
+            route: 'profile.edit',
+            parameters: $user->id
         )->with(
-            'flash',
-            [
+            key: 'flash',
+            value: [
                 'success' => 'Email atualizado com sucesso!'
             ]
         );
