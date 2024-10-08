@@ -18,28 +18,28 @@ class ProfileController extends Controller
      */
     public function edit(Request $request, User $user): Response
     {
-        return Inertia::render('Profile/Edit', [
-            'loggedInUser' => $request->user(), // O usuário logado
-            'user' => $user, // O usuário a ser editado
+        return Inertia::render(component: 'Profile/Edit', props: [
+            'loggedInUser' => $request->user(),
+            'user' => $user,
         ]);
     }
 
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request, User $user)
+    public function update(ProfileUpdateRequest $request, User $user): RedirectResponse
     {
-        $user->fill($request->validated());
+        $user->fill(attributes: $request->validated());
 
-        if ($user->isDirty('email')) {
+        if ($user->isDirty(attributes: 'email')) {
             $user->email_verified_at = null;
         }
 
         $user->save();
 
-        return Redirect::route('profile.edit', $user->id)->with(
-            'flash',
-            [
+        return Redirect::route(route: 'profile.edit', parameters: $user->id)->with(
+            key: 'flash',
+            value: [
                 'success' => 'Perfil atualizado com sucesso!'
             ]
         );
@@ -50,14 +50,14 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request, User $user): RedirectResponse
     {
-        $request->validate([
+        $request->validate(rules: [
             'password' => ['required', 'current_password'],
         ]);
 
         if (!$user) {
-            return Redirect::to('admin/registered')->with(
-                'flash',
-                [
+            return Redirect::to(path: 'admin/registered')->with(
+                key: 'flash',
+                value: [
                     'error' => 'Usuário não encontrado!'
                 ]
             );
@@ -74,9 +74,9 @@ class ProfileController extends Controller
             $request->session()->invalidate();
             $request->session()->regenerateToken();
 
-            return Redirect::to('/')->with(
-                'flash',
-                [
+            return Redirect::to(path: '/')->with(
+                key: 'flash',
+                value: [
                     'success' => 'Conta excluída com sucesso!'
                 ]
             );
@@ -84,9 +84,9 @@ class ProfileController extends Controller
 
         $user->delete();
 
-        return Redirect::to('admin/registered')->with(
-            'flash',
-            [
+        return Redirect::to(path: 'admin/registered')->with(
+            key: 'flash',
+            value: [
                 'success' => 'Usuário excluído com sucesso!'
             ]
         );
