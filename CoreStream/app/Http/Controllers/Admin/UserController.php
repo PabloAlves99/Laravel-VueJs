@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $users = User::all();
 
-        return Inertia::render('Admin/Users/UsersRegistered', [
+        return Inertia::render(component: 'Admin/Users/UsersRegistered', props: [
             'users' => $users,
         ]);
     }
